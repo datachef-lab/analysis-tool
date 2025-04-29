@@ -1,5 +1,6 @@
 import { OpenAI } from 'openai';
 import dbMetadata from '../data/db_metadata.json';
+import { displayFormats } from './displayFormats';
 
 // Interfaces
 export interface QueryAnalysis {
@@ -62,6 +63,15 @@ const client = new OpenAI({
  */
 export async function analyzeQuery(question: string): Promise<QueryAnalysis> {
     try {
+        // Convert display format information into guidance text
+        const displayFormatGuidance = Object.values(displayFormats).map(format => {
+            return `${format.displayType} - ${format.description}
+   - Data requirements: ${format.dataRequirements.join(', ')}
+   - Best used for: ${format.bestUsedFor.join(', ')}
+   - Example SQL: ${format.sqlExamples[0].split('\n').map(line => line.trim()).join(' ')}
+   - Result format: ${format.resultFormat}`;
+        }).join('\n\n');
+
         const prompt = [
             {
                 role: "system" as const,
@@ -84,6 +94,18 @@ IMPORTANT PATTERNS TO RECOGNIZE:
 - Always return user-friendly column names using aliases (e.g., "Student Name" instead of "name")
 - Include appropriate year filters when years are mentioned (e.g., 2023)
 - Limit large result sets to 100 records by default unless otherwise specified
+
+DISPLAY TYPE RECOMMENDATIONS:
+Based on the query pattern, you should recommend the most appropriate display type. The frontend supports the following display formats:
+
+${displayFormatGuidance}
+
+When choosing a display type:
+- For single value results (min, max, count) → use numberCard
+- For time series or trend data → use lineChart
+- For category comparisons → use barChart
+- For proportion/distribution data → use pieChart
+- For detailed multi-column data → use table
 
 Return your analysis as a JSON object with the following structure:
 {

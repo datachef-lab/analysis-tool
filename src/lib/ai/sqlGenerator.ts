@@ -107,6 +107,38 @@ ${JSON.stringify(dbMetadata, null, 2)}
 Here's some sample data to help with query construction:
 ${JSON.stringify(sampleData, null, 2)}
 
+IMPORTANT: Structure your SQL based on the display type recommended in the analysis:
+
+1. For "table" display:
+   - Multiple rows/columns of data are appropriate
+   - Use descriptive column names with aliases
+   - Example: SELECT u.name AS "Student Name", m.sgpa AS "SGPA", m.cgpa AS "CGPA" FROM ...
+
+2. For "barChart" display:
+   - First column should be category labels (x-axis)
+   - Second column should be numeric values (y-axis)
+   - Limit to 10-15 categories for readability
+   - Example: SELECT d.name AS "Department", COUNT(s.id) AS "Student Count" FROM ...
+
+3. For "pieChart" display:
+   - First column should be category labels (segments)
+   - Second column should be numeric values (size of segments)
+   - Limit to 5-8 categories for readability
+   - Consider using CASE statements to group small categories as "Other"
+   - Example: SELECT 'Passed' AS "Status", COUNT(*) AS "Count" FROM ...
+
+4. For "lineChart" display:
+   - First column should be time/sequence points (x-axis)
+   - Second column should be numeric values (y-axis)
+   - Order by time/sequence column
+   - Example: SELECT m.year AS "Year", AVG(m.cgpa) AS "Average CGPA" FROM ...
+
+5. For "numberCard" display:
+   - Return exactly one row with clear column names
+   - First column should be the main label/description
+   - Include supporting context columns as needed
+   - Example: SELECT s.name AS "Subject Name", COUNT(*) AS "Total Students", ROUND((COUNT(CASE WHEN status = 'PASS' THEN 1 END)::FLOAT / COUNT(*)) * 100, 2) AS "Pass Rate" FROM ...
+
 Guidelines for generating SQL:
 - Generate valid PostgreSQL syntax only
 - Include proper table joins based on the identified relationships
