@@ -3,8 +3,9 @@ import { defineConfig } from 'drizzle-kit';
 
 export default defineConfig({
     out: './drizzle',
+    schema: './src/lib/db/schema.ts',
+    dialect: 'postgresql',
     dbCredentials: {
-        wranglerConfigPath: './wrangler.toml',
-        dbName: 'academic360',
+        url: process.env.DATABASE_URL!,
     },
 });
