@@ -73,21 +73,21 @@ const suggestionPrompts = [
   {
     id: "academic-performance",
     title: "Academic Performance",
-    prompt: "What's the average GPA across all departments?",
-    description: '"What\'s the average GPA across all departments?"',
+    prompt: "What's the average SGPA across all departments?",
+    description: '"What\'s the average SGPA across all departments?"',
   },
   {
     id: "top-students",
     title: "Top Students",
-    prompt: "Show me the top 5 students in Computer Science",
-    description: '"Show me the top 5 students in Computer Science"',
+    prompt: "Show me the top 5 students marksheets for BCOM",
+    description: '"Show me the top 5 students marksheets for BCOM"',
   },
   {
-    id: "attendance-analysis",
-    title: "Attendance Analysis",
-    prompt: "Compare attendance rates between first and final year students",
+    id: "distribution-analysis",
+    title: "Distribution analysis",
+    prompt: "Compare the students gender distribution",
     description:
-      '"Compare attendance rates between first and final year students"',
+      '"Compare the students gender distribution"',
   },
   {
     id: "subject-performance",

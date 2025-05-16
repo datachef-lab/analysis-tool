@@ -4,19 +4,12 @@ import React, { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import {
   BarChart2,
-  BookOpen,
   ChevronLeft,
   ChevronRight,
-  GraduationCap,
   Home,
-  Layers,
   MessageSquare,
-  PieChart,
   Settings,
-  Users,
   Menu,
-  FileBarChart,
-  Calendar,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -63,52 +56,52 @@ export default function HomeLayout({
       variant: isActive("/home"),
       href: "/home",
     },
-    {
-      title: "Analytics",
-      icon: <BarChart2 className="h-4 w-4" />,
-      variant: isActive("/home/analytics"),
-      href: "/home/analytics",
-    },
-    {
-      title: "Reports",
-      icon: <FileBarChart className="h-4 w-4" />,
-      variant: isActive("/home/reports"),
-      href: "/home/reports",
-    },
+    // {
+    //   title: "Analytics",
+    //   icon: <BarChart2 className="h-4 w-4" />,
+    //   variant: isActive("/home/analytics"),
+    //   href: "/home/analytics",
+    // },
+    // {
+    //   title: "Reports",
+    //   icon: <FileBarChart className="h-4 w-4" />,
+    //   variant: isActive("/home/reports"),
+    //   href: "/home/reports",
+    // },
   ];
 
-  const dataLinks = [
-    {
-      title: "Students",
-      icon: <Users className="h-4 w-4" />,
-      variant: isActive("/home/students"),
-      href: "/home/students",
-    },
-    {
-      title: "Courses",
-      icon: <BookOpen className="h-4 w-4" />,
-      variant: isActive("/home/courses"),
-      href: "/home/courses",
-    },
-    {
-      title: "Faculty",
-      icon: <GraduationCap className="h-4 w-4" />,
-      variant: isActive("/home/faculty"),
-      href: "/home/faculty",
-    },
-    {
-      title: "Departments",
-      icon: <Layers className="h-4 w-4" />,
-      variant: isActive("/home/departments"),
-      href: "/home/departments",
-    },
-    {
-      title: "Schedule",
-      icon: <Calendar className="h-4 w-4" />,
-      variant: isActive("/home/schedule"),
-      href: "/home/schedule",
-    },
-  ];
+  //   const dataLinks = [
+  //     {
+  //       title: "Students",
+  //       icon: <Users className="h-4 w-4" />,
+  //       variant: isActive("/home/students"),
+  //       href: "/home/students",
+  //     },
+  //     {
+  //       title: "Courses",
+  //       icon: <BookOpen className="h-4 w-4" />,
+  //       variant: isActive("/home/courses"),
+  //       href: "/home/courses",
+  //     },
+  //     {
+  //       title: "Faculty",
+  //       icon: <GraduationCap className="h-4 w-4" />,
+  //       variant: isActive("/home/faculty"),
+  //       href: "/home/faculty",
+  //     },
+  //     {
+  //       title: "Departments",
+  //       icon: <Layers className="h-4 w-4" />,
+  //       variant: isActive("/home/departments"),
+  //       href: "/home/departments",
+  //     },
+  //     {
+  //       title: "Schedule",
+  //       icon: <Calendar className="h-4 w-4" />,
+  //       variant: isActive("/home/schedule"),
+  //       href: "/home/schedule",
+  //     },
+  //   ];
 
   const aiToolLinks = [
     {
@@ -117,12 +110,12 @@ export default function HomeLayout({
       variant: isActive("/home/chat"),
       href: "/home/chat",
     },
-    {
-      title: "Data Insights",
-      icon: <PieChart className="h-4 w-4" />,
-      variant: isActive("/home/insights"),
-      href: "/home/insights",
-    },
+    // {
+    //   title: "Data Insights",
+    //   icon: <PieChart className="h-4 w-4" />,
+    //   variant: isActive("/home/insights"),
+    //   href: "/home/insights",
+    // },
   ];
 
   return (
@@ -202,7 +195,7 @@ export default function HomeLayout({
                     <Separator className="mx-auto h-[2px] w-5 rounded-full bg-slate-300 dark:bg-slate-700" />
                   )}
                 </div>
-                <SidebarNav isCollapsed={isCollapsed} links={dataLinks} />
+                {/* <SidebarNav isCollapsed={isCollapsed} links={dataLinks} /> */}
               </div>
 
               <div className="mb-2">
